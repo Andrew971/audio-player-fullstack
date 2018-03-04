@@ -72,44 +72,61 @@ export default class Player extends Component {
 	}
 
 
-	
+
 
 	render() {
 		const timeline = { width: this.state.progress + '%' };
+		let currentTittle= ''
 
+		if(this.props.currentSong.length === 0){
+			 currentTittle= ''
+
+		}else{
+			let Song = this.props.data.find((song)=>{			
+				return song.src === this.props.currentSong
+		
+		})
+		 currentTittle = Song.name
+		}
+	
+		
 		return (
 
 
 			<div className="footer" align="center" >
-				<br />
-				<div className="audioplayer">
-				<button onClick={() => { this.props.changeSong(-1) }} disabled={(this.props.List.indexOf(this.props.currentSong) === 0) || this.props.List.length === 0}>
-					<i className="fa fa-backward" aria-hidden="true"></i>
-				</button>
-				<button onClick={() => { this.props.playPause() }} >
-					{this.props.play ?
-						<i className="fa fa-pause" aria-hidden="true"></i> :
-						<i className="fa fa-play" aria-hidden="true"></i>
-					}
-				</button>
-				<button onClick={() => { this.props.changeSong(1) }} disabled={(this.props.List.indexOf(this.props.currentSong) === this.props.List.length - 1) || this.props.List.length === 0}>
-					<i className="fa fa-forward" aria-hidden="true"></i>
-				</button>
-				
-				<br />
-				<div className="timeline">
-					<div className="current-time">{this.state.currentTimeDisplay}</div>
-					<div className="player-progress-container" onClick={this.setProgress} ref={(self) => { this.timeline = self }}>
-						<span
-							className="player-progress-value"
-							style={timeline} ref={(self) => { this.handle = self }}>
-						</span>
-					</div>
-					<div className="total-time">{this.state.totalTimeDisplay}</div>
+				<div className="row">
+				<div className="col-xs-4 col-md-3 col-lg-3 title">
+					{currentTittle}
 				</div>
+				<div className="col-xs-8 col-md-9 col-lg-9 audioplayer">
+					<button onClick={() => { this.props.changeSong(-1) }} disabled={(this.props.List.indexOf(this.props.currentSong) === 0) || this.props.List.length === 0}>
+						<i className="fa fa-backward" aria-hidden="true"></i>
+					</button>
+					<button onClick={() => { this.props.playPause() }} >
+						{this.props.play ?
+							<i className="fa fa-pause" aria-hidden="true"></i> :
+							<i className="fa fa-play" aria-hidden="true"></i>
+						}
+					</button>
+					<button onClick={() => { this.props.changeSong(1) }} disabled={(this.props.List.indexOf(this.props.currentSong) === this.props.List.length - 1) || this.props.List.length === 0}>
+						<i className="fa fa-forward" aria-hidden="true"></i>
+					</button>
+
+					<br />
+					<div className="timeline">
+						<div className="current-time">{this.state.currentTimeDisplay}</div>
+						<div className="player-progress-container" onClick={this.setProgress} ref={(self) => { this.timeline = self }}>
+							<span
+								className="player-progress-value"
+								style={timeline} ref={(self) => { this.handle = self }}>
+							</span>
+						</div>
+						<div className="total-time">{this.state.totalTimeDisplay}</div>
+					</div>
 
 
-				<audio src={this.props.currentSong} ref={(audio) => { this.audio = audio }} />
+					<audio src={this.props.currentSong} ref={(audio) => { this.audio = audio }} />
+				</div>
 			</div>
 			</div>
 		);

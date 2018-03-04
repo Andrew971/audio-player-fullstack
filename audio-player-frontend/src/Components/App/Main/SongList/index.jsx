@@ -18,7 +18,7 @@ export default class SongList extends Component {
 								<button onClick={() => {
 									this.props.handler(song.src)
 								}}>
-									{(this.props.currentSong === song.src) ?
+									{(this.props.currentSong === song.src && this.props.play === true) ?
 										<i className="fa fa-pause" aria-hidden="true"></i> :
 										<i className="fa fa-play" aria-hidden="true"></i>
 									}

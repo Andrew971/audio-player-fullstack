@@ -44,7 +44,6 @@ export default class App extends Component {
   }
 
   handler = (src) => {
-    console.log(this.state.List.indexOf(src))
     if (this.state.List.indexOf(src) === -1) {
       this.state.List.push(src)
     }
@@ -55,7 +54,7 @@ export default class App extends Component {
     this.setState({
       List: this.state.List,
       currentSong: songSrc,
-      play: true
+      play: !this.state.play
     })
   }
   playPause = () => {
@@ -125,7 +124,7 @@ export default class App extends Component {
           currentSong={this.state.currentSong}
           play={this.state.play}
           playPause={this.playPause}
-
+          data={this.state.data}
         />
 
       </div>
