@@ -1,0 +1,27 @@
+/* The sidebar menu */
+.nav-bar-container {
+    width: 220px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(to top, rgb(0, 0, 0), rgb(39, 64, 85));
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding: 20px 20px 5vh 20px;
+    h1{
+        color:white;
+    }
+    a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        &:hover {
+            color: #f1f1f1;
+        }
+    }
+
+}
+
+

@@ -1,0 +1,54 @@
+html,body{
+    height:100vh;
+    background: linear-gradient(to bottom right, rgb(16, 85, 145), rgba(138, 199, 254, 0.769));
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    color:white;
+    a{
+        cursor: pointer;
+        color:white;
+    }
+}
+.content{
+    margin-left:220px;
+    max-height:90vh;
+    overflow:auto;
+}
+
+
+
+button{
+    background:transparent;
+    border-radius:25%;
+    margin:2rem;
+    border:0;
+
+    &:disabled{
+        color:grey;
+    }
+}
+.fa {
+    background:transparent;
+}
+
+.fa-play,.fa-pause {
+    font-size: 4rem;
+}
+
+.fa-forward,.fa-backward {
+    font-size: 2rem;
+}
+.content::-webkit-scrollbar {
+    width: 12px;
+     }
+  
+.content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.331);
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.331);
+    }
+@import "./Partials/Nav";
+@import "./Partials/Player";
+@import "./Partials/SongList";
+@import "./Partials/SongDetails";

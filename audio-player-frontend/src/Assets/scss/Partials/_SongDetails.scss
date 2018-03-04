@@ -1,0 +1,42 @@
+
+.media{
+  margin-bottom:2rem;
+}
+
+.album1{
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+
+}
+
+.active1 {
+  transition: .5s ease;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.box :hover .album1 {
+  opacity: 0.3;
+}
+
+.media:hover .active1 {
+  opacity: 1;
+}
+
+.list-song{
+  height:70vh;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+.list-song::-webkit-scrollbar {
+  width: 12px;
+   }
+
+.list-song::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.331);
+  -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.331);
+  }
