@@ -13,7 +13,7 @@ export default class Nav extends Component {
 					<hr />
 					<a href="">About</a>
 					<a href="">Services</a>
-					<a href="/playlist">My Playlist</a>
+					<Link to="/playlist">My Playlist</Link>
 					<LogButton/>
 				</div>
 			</aside>

@@ -1,12 +1,15 @@
 import axios from 'axios'
 
+class Auth {
+  constructor() {
+    const token = localStorage.getItem('token')
+    this.token = token
+  }
 
-const Auth = {
-  userToken : localStorage.getItem('token'),
-  isAuthenticated: false, //Has the user authenticated with the server?
-  token: null,            //The token received from the server after authentication
-  //Authenticate method - username/password and callback
-  
+  isAuthenticated = () => {
+    return this.token ? true : false
+  }
+
   authenticate(username, password, cb) {
     //Use axios to post the username/password to the server
     axios.post('http://localhost:8080/login', {
@@ -17,15 +20,18 @@ const Auth = {
       //the user is now authenticated. Call the callback.
       if(response.data.token) {
         console.log(this.isAuthenticated)
-        this.isAuthenticated = true
+
+        //this.isAuthenticated = true
         this.token = response.data.token
+        console.log(this.token)
+        console.log(this.isAuthenticated)
         localStorage.setItem('token',response.data.token)
         cb(true)
       } else {
         cb(false)
       }
     })
-  },
+  }
   //Signout method - signs out the user, and calls a signout endpoint on
   //the server. 
   signout(token, cb) {
@@ -36,11 +42,12 @@ const Auth = {
     }).then((response) => {
       //Reset the authentication properties and token to indicate
       //the user is not logged in. 
-      this.isAuthenticated = false
+      //this.isAuthenticated = false
       this.token = null
+      localStorage.removeItem('token')
       cb(response.data)
     })
-  },
+  }
   //Signup method - signs up a user on the server
   signup(username, password, cb) {
     axios.post('http://localhost:8080/signup', {
@@ -52,4 +59,5 @@ const Auth = {
   }
 }
 
-export default Auth ;
+export default new Auth()
+
