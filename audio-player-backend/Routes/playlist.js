@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
 
 router.post('/',jsonParser,(req, res, body) => {
   let data = req.body
-  console.log(data)
   let flag = false
   if (User.length == 0) {
       User.push(data)
